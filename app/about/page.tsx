@@ -25,8 +25,8 @@ const bodyComponents: Components = {
 async function Photo({ section }: { section: AboutSection }) {
   const camera = await readCameraSpecs(section.photo);
   return (
-    <FadeIn y={16} className="w-fit">
-      <div className="group relative w-[400px] max-w-full h-[550px] bg-border rounded-2xl shadow-[0_30px_55px_-18px_rgba(0,0,0,0.3),0_14px_25px_-10px_rgba(0,0,0,0.2),0_6px_10px_-4px_rgba(0,0,0,0.13)] ring-1 ring-black/5 overflow-hidden">
+    <FadeIn y={16} className="w-full max-w-[400px]">
+      <div className="group relative w-full aspect-[400/550] bg-border rounded-2xl shadow-[0_30px_55px_-18px_rgba(0,0,0,0.3),0_14px_25px_-10px_rgba(0,0,0,0.2),0_6px_10px_-4px_rgba(0,0,0,0.13)] ring-1 ring-black/5 overflow-hidden">
         <Image
           src={section.photo}
           alt={section.heading}
@@ -58,8 +58,8 @@ function Text({
   uppercase?: boolean;
 }) {
   return (
-    <FadeIn y={16}>
-      <div className={`flex flex-col w-[400px] max-w-full px-5 gap-8`}>
+    <FadeIn y={16} className="w-full max-w-[400px]">
+      <div className="flex flex-col w-full px-5 gap-8">
         <h2
           className={uppercase ? "text-h1 uppercase tracking-widest" : "text-h2"}
         >
@@ -73,8 +73,8 @@ function Text({
 
 function Closing() {
   return (
-    <FadeIn y={16}>
-      <div className="mt-10 flex flex-col items-center text-center w-[400px] max-w-full px-5 gap-3">
+    <FadeIn y={16} className="w-full max-w-[400px]">
+      <div className="mt-10 flex flex-col items-center text-center w-full px-5 gap-3">
         <p className="text-body font-semibold text-fg">Thanks for stopping by!</p>
         <Image src="/logo.svg" alt="" width={56} height={56} aria-hidden="true" />
         <p className="text-body font-light text-subtle max-w-[260px]">
