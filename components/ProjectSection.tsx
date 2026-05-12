@@ -25,7 +25,7 @@ export function ProjectSection({ project }: { project: ProjectSummary }) {
             meta.cover
               ? {
                   backgroundImage: `url(${meta.cover})`,
-                  backgroundSize: "contain",
+                  backgroundSize: "cover",
                   backgroundPosition: "center",
                   backgroundRepeat: "no-repeat",
                 }
