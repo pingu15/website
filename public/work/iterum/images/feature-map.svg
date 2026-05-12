@@ -1,0 +1,120 @@
+<svg viewBox="0 0 960 510" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fmap-title fmap-desc" font-family="ui-serif, Georgia, serif">
+  <title id="fmap-title">Iterum feature map and screen flow</title>
+  <desc id="fmap-desc">Boot flow from app launch through bootstrap and onboarding into a four-tab main app, with sub-screens beneath each tab.</desc>
+  <defs>
+    <style>
+      .bg     { fill: #FAF7F2; }
+      .card   { fill: #FFFFFF; stroke: #C9BBA4; stroke-width: 1; }
+      .accentSoft { fill: #F1E6D8; stroke: #D9C4A5; stroke-width: 1; }
+      .navySoft   { fill: #E4EAF2; stroke: #B9C5D6; stroke-width: 1; }
+      .ink    { fill: #2A2520; }
+      .muted  { fill: #8B7E6D; }
+      .line   { stroke: #C9BBA4; stroke-width: 1.4; fill: none; }
+      .arrow  { stroke: #7A5A3F; stroke-width: 1.6; fill: none; }
+      .h      { font-family: ui-serif, Georgia, serif; font-weight: 700; }
+      .t      { font-family: ui-sans-serif, -apple-system, sans-serif; font-size: 11px; }
+      .note   { font-family: ui-sans-serif, -apple-system, sans-serif; font-size: 10px; font-style: italic; }
+      .lbl    { font-family: ui-sans-serif, -apple-system, sans-serif; font-size: 10px; letter-spacing: 1.2px; text-transform: uppercase; }
+    </style>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#7A5A3F"/>
+    </marker>
+  </defs>
+  <rect class="bg" width="960" height="510"/>
+  <text class="lbl muted" x="36" y="42">Launch sequence</text>
+  <g transform="translate(36, 56)">
+    <rect class="card" width="148" height="48" rx="6"/>
+    <text class="h ink" x="74" y="22" text-anchor="middle" font-size="13">App launch</text>
+    <text class="t muted" x="74" y="38" text-anchor="middle">@main IterumApp</text>
+    <rect class="card" x="178" width="168" height="48" rx="6"/>
+    <text class="h ink" x="262" y="22" text-anchor="middle" font-size="13">AppBootstrap</text>
+    <text class="t muted" x="262" y="38" text-anchor="middle">.loading → .ready</text>
+    <rect class="card" x="372" width="172" height="48" rx="6"/>
+    <text class="h ink" x="458" y="22" text-anchor="middle" font-size="13">FinishingSetupView</text>
+    <text class="t muted" x="458" y="38" text-anchor="middle">cloud pull / grace period</text>
+    <rect class="card" x="570" width="156" height="48" rx="6"/>
+    <text class="h ink" x="648" y="22" text-anchor="middle" font-size="13">OnboardingView</text>
+    <text class="t muted" x="648" y="38" text-anchor="middle">name → journal</text>
+    <rect class="card" x="752" width="140" height="48" rx="6"/>
+    <text class="h ink" x="822" y="22" text-anchor="middle" font-size="13">ContentView</text>
+    <text class="t muted" x="822" y="38" text-anchor="middle">main app</text>
+    <path class="arrow" d="M 148 24 L 178 24" marker-end="url(#ah)"/>
+    <path class="arrow" d="M 346 24 L 372 24" marker-end="url(#ah)"/>
+    <path class="arrow" d="M 544 24 L 570 24" marker-end="url(#ah)"/>
+    <path class="arrow" d="M 726 24 L 752 24" marker-end="url(#ah)"/>
+  </g>
+  <text class="note muted" x="298" y="124" text-anchor="middle">checks iCloud identity · store openable</text>
+  <text class="note muted" x="494" y="124" text-anchor="middle">waits for first sync event · 6s timeout</text>
+  <path class="line" d="M 858 105 C 858 160 540 160 540 180" stroke-dasharray="3 3"/>
+  <g transform="translate(380, 180)">
+    <rect class="card" width="200" height="56" rx="8" stroke="#7A5A3F" stroke-width="1.4"/>
+    <text class="h ink" x="100" y="24" text-anchor="middle" font-size="14">ContentView</text>
+    <text class="t muted" x="100" y="42" text-anchor="middle">CustomTabBar · 4 tabs</text>
+  </g>
+  <path class="line" d="M 480 236 L 480 258"/>
+  <path class="line" d="M 140 258 L 800 258"/>
+  <path class="line" d="M 140 258 L 140 280"/>
+  <path class="line" d="M 360 258 L 360 280"/>
+  <path class="line" d="M 580 258 L 580 280"/>
+  <path class="line" d="M 800 258 L 800 280"/>
+  <g transform="translate(40, 280)">
+    <rect class="accentSoft" width="200" height="44" rx="6"/>
+    <text class="h ink" x="100" y="20" text-anchor="middle" font-size="13">Today</text>
+    <text class="t muted" x="100" y="36" text-anchor="middle">greeting · trackers · on-this-day</text>
+    <g class="t ink" transform="translate(0, 60)">
+      <rect class="card" width="200" height="26" rx="4"/>
+      <text x="100" y="17" text-anchor="middle">TrackerSlotCard</text>
+      <rect class="card" y="34" width="200" height="26" rx="4"/>
+      <text x="100" y="51" text-anchor="middle">AddTrackerCard</text>
+      <rect class="card" y="68" width="200" height="26" rx="4"/>
+      <text x="100" y="85" text-anchor="middle">OnThisDayCard</text>
+      <rect class="card" y="102" width="200" height="26" rx="4"/>
+      <text x="100" y="119" text-anchor="middle">TrackerEditor / Detail</text>
+    </g>
+  </g>
+  <g transform="translate(260, 280)">
+    <rect class="accentSoft" width="200" height="44" rx="6"/>
+    <text class="h ink" x="100" y="20" text-anchor="middle" font-size="13">Journal</text>
+    <text class="t muted" x="100" y="36" text-anchor="middle">grouped by month</text>
+    <g class="t ink" transform="translate(0, 60)">
+      <rect class="card" width="200" height="26" rx="4"/>
+      <text x="100" y="17" text-anchor="middle">JournalEntryRow</text>
+      <rect class="card" y="34" width="200" height="26" rx="4"/>
+      <text x="100" y="51" text-anchor="middle">JournalSearchView</text>
+      <rect class="card" y="68" width="200" height="26" rx="4"/>
+      <text x="100" y="85" text-anchor="middle">EntryEditorView</text>
+      <rect class="card" y="102" width="200" height="26" rx="4"/>
+      <text x="100" y="119" text-anchor="middle">Photo · Location · Tag pickers</text>
+    </g>
+  </g>
+  <g transform="translate(480, 280)">
+    <rect class="accentSoft" width="200" height="44" rx="6"/>
+    <text class="h ink" x="100" y="20" text-anchor="middle" font-size="13">Calendar</text>
+    <text class="t muted" x="100" y="36" text-anchor="middle">month grid · day drill-in</text>
+    <g class="t ink" transform="translate(0, 60)">
+      <rect class="card" width="200" height="26" rx="4"/>
+      <text x="100" y="17" text-anchor="middle">CalendarTabView</text>
+      <rect class="card" y="34" width="200" height="26" rx="4"/>
+      <text x="100" y="51" text-anchor="middle">DayJournalView</text>
+      <rect class="card" y="68" width="200" height="26" rx="4"/>
+      <text x="100" y="85" text-anchor="middle">TrackerDetailView</text>
+      <rect class="card" y="102" width="200" height="26" rx="4"/>
+      <text x="100" y="119" text-anchor="middle">EntryEditorView</text>
+    </g>
+  </g>
+  <g transform="translate(700, 280)">
+    <rect class="accentSoft" width="200" height="44" rx="6"/>
+    <text class="h ink" x="100" y="20" text-anchor="middle" font-size="13">Map</text>
+    <text class="t muted" x="100" y="36" text-anchor="middle">clusters · cluster sheet</text>
+    <g class="t ink" transform="translate(0, 60)">
+      <rect class="card" width="200" height="26" rx="4"/>
+      <text x="100" y="17" text-anchor="middle">MapTabView</text>
+      <rect class="card" y="34" width="200" height="26" rx="4"/>
+      <text x="100" y="51" text-anchor="middle">ClusterPin</text>
+      <rect class="card" y="68" width="200" height="26" rx="4"/>
+      <text x="100" y="85" text-anchor="middle">ClusterEntriesSheet</text>
+      <rect class="card" y="102" width="200" height="26" rx="4"/>
+      <text x="100" y="119" text-anchor="middle">EntryEditorView</text>
+    </g>
+  </g>
+</svg>

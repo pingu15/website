@@ -1,0 +1,122 @@
+<svg viewBox="0 0 960 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="erd-title erd-desc" font-family="ui-serif, Georgia, serif">
+  <title id="erd-title">Iterum data model</title>
+  <desc id="erd-desc">Entity relationship diagram showing JournalEntry, EntryPhoto, EntryTag, Tracker, TrackerEntry, and AppSettings with their SwiftData relationships and cascade rules.</desc>
+  <defs>
+    <style>
+      .bg     { fill: #FAF7F2; }
+      .card   { fill: #FFFFFF; stroke: #C9BBA4; stroke-width: 1; }
+      .header { fill: #F1E6D8; }
+      .headerNavy { fill: #E4EAF2; }
+      .accent { fill: #7A5A3F; }
+      .navy   { fill: #2C3F5C; }
+      .ink    { fill: #2A2520; }
+      .muted  { fill: #8B7E6D; }
+      .key    { fill: #C45A3A; }
+      .line   { stroke: #C9BBA4; stroke-width: 1.4; fill: none; }
+      .lineCascade { stroke: #7A5A3F; stroke-width: 1.6; fill: none; }
+      .h      { font-family: ui-serif, Georgia, serif; font-weight: 700; }
+      .t      { font-family: ui-sans-serif, -apple-system, sans-serif; font-size: 11px; }
+      .tt     { font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 11px; }
+      .lbl    { font-family: ui-sans-serif, -apple-system, sans-serif; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; }
+    </style>
+  </defs>
+  <rect class="bg" width="960" height="560"/>
+  <g transform="translate(60, 90)">
+    <rect class="card" width="240" height="206" rx="6"/>
+    <rect class="header" width="240" height="34" rx="6"/>
+    <rect class="header" y="22" width="240" height="12"/>
+    <text class="h ink" x="14" y="22" font-size="14">JournalEntry</text>
+    <text class="lbl muted" x="170" y="22">@Model</text>
+    <g class="t ink" transform="translate(14, 54)">
+      <text class="key">●</text><text x="14">id : UUID</text>
+      <text y="18">date : Date</text>
+      <text y="36">title · plainText</text>
+      <text y="54">bodyData : Data</text>
+      <text y="72">latitude · longitude</text>
+      <text y="90">locationName</text>
+      <text y="108">weatherSymbol · tempC · key</text>
+      <text y="126">coverPhotoID : UUID?</text>
+    </g>
+  </g>
+  <g transform="translate(360, 90)">
+    <rect class="card" width="220" height="140" rx="6"/>
+    <rect class="header" width="220" height="34" rx="6"/>
+    <rect class="header" y="22" width="220" height="12"/>
+    <text class="h ink" x="14" y="22" font-size="14">EntryPhoto</text>
+    <text class="lbl muted" x="156" y="22">@Model</text>
+    <g class="t ink" transform="translate(14, 54)">
+      <text class="key">●</text><text x="14">id : UUID</text>
+      <text y="18">data : Data</text>
+      <text y="36">sortOrder : Int</text>
+      <text y="54">createdAt : Date</text>
+      <text y="72">entry → JournalEntry</text>
+    </g>
+  </g>
+  <g transform="translate(360, 270)">
+    <rect class="card" width="220" height="120" rx="6"/>
+    <rect class="header" width="220" height="34" rx="6"/>
+    <rect class="header" y="22" width="220" height="12"/>
+    <text class="h ink" x="14" y="22" font-size="14">EntryTag</text>
+    <text class="lbl muted" x="156" y="22">@Model</text>
+    <g class="t ink" transform="translate(14, 54)">
+      <text>name : String</text>
+      <text y="18">colorHex : String</text>
+      <text y="36">createdAt : Date</text>
+      <text y="54">entries ↔ [JournalEntry]</text>
+    </g>
+  </g>
+  <g transform="translate(640, 90)">
+    <rect class="card" width="260" height="170" rx="6"/>
+    <rect class="headerNavy" width="260" height="34" rx="6"/>
+    <rect class="headerNavy" y="22" width="260" height="12"/>
+    <text class="h ink" x="14" y="22" font-size="14">Tracker</text>
+    <text class="lbl muted" x="196" y="22">@Model</text>
+    <g class="t ink" transform="translate(14, 54)">
+      <text class="key">●</text><text x="14">id : UUID</text>
+      <text y="18">name : String</text>
+      <text y="36">kind : number · boolean · rating · duration</text>
+      <text y="54">unit · customUnit · customPrefix</text>
+      <text y="72">incrementValue · ratingMax</text>
+      <text y="90">accentHex · iconName · sortOrder</text>
+      <text y="108">createdAt : Date</text>
+    </g>
+  </g>
+  <g transform="translate(640, 326)">
+    <rect class="card" width="260" height="120" rx="6"/>
+    <rect class="headerNavy" width="260" height="34" rx="6"/>
+    <rect class="headerNavy" y="22" width="260" height="12"/>
+    <text class="h ink" x="14" y="22" font-size="14">TrackerEntry</text>
+    <text class="lbl muted" x="186" y="22">@Model</text>
+    <g class="t ink" transform="translate(14, 54)">
+      <text class="key">●</text><text x="14">id : UUID</text>
+      <text y="18">day : Date</text>
+      <text y="36">value : Double</text>
+      <text y="54">tracker → Tracker</text>
+    </g>
+  </g>
+  <g transform="translate(60, 326)">
+    <rect class="card" width="240" height="170" rx="6"/>
+    <rect class="header" width="240" height="34" rx="6"/>
+    <rect class="header" y="22" width="240" height="12"/>
+    <text class="h ink" x="14" y="22" font-size="14">AppSettings</text>
+    <text class="lbl muted" x="170" y="22">@Model</text>
+    <g class="t ink" transform="translate(14, 54)">
+      <text class="key">●</text><text x="14">id : UUID</text>
+      <text y="18">userName · journalName</text>
+      <text y="36">userPhoto : Data?</text>
+      <text y="54">defaultLatitude · longitude · name</text>
+      <text y="72">dailyReminderEnabled · hour · minute</text>
+      <text y="90">accentHex · temperatureUnit</text>
+      <text y="108">appearance : system · light · dark</text>
+    </g>
+  </g>
+  <path class="lineCascade" d="M 300 160 L 360 160"/>
+  <text class="t accent" x="304" y="152">1</text>
+  <text class="t accent" x="344" y="152">N</text>
+  <path class="line" d="M 300 220 C 330 220 330 320 360 320"/>
+  <text class="t muted" x="312" y="218">N</text>
+  <text class="t muted" x="350" y="308">N</text>
+  <path class="lineCascade" d="M 770 260 L 770 326"/>
+  <text class="t accent" x="758" y="270">1</text>
+  <text class="t accent" x="758" y="322">N</text>
+</svg>

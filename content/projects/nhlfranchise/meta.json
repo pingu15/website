@@ -1,0 +1,8 @@
+{
+  "title": "NHL Franchise: The Game",
+  "summary": "A fully fledged NHL franchise management simulator built from real league data.",
+  "tech": "Django, Svelte, PostgreSQL, Redis, AWS, Docker, Nginx, GitHub Actions",
+  "order": 2,
+  "cover": "/photos/project-2.svg",
+  "links": []
+}

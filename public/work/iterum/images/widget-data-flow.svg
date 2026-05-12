@@ -1,0 +1,91 @@
+<svg viewBox="0 60 960 440" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="wdf-title wdf-desc" font-family="ui-serif, Georgia, serif">
+  <title id="wdf-title">Iterum widget data flow</title>
+  <desc id="wdf-desc">Three-process layout: the host iterum app, the App Group shared store, and the widget extension. Each process owns the components shown inside its box. Vertical dashed lines mark process boundaries.</desc>
+  <defs>
+    <style>
+      .bg     { fill: #FAF7F2; }
+      .card   { fill: #FFFFFF; stroke: #C9BBA4; stroke-width: 1; }
+      .accentSoft { fill: #F1E6D8; stroke: #D9C4A5; stroke-width: 1; }
+      .navySoft   { fill: #E4EAF2; stroke: #B9C5D6; stroke-width: 1; }
+      .ink    { fill: #2A2520; }
+      .muted  { fill: #8B7E6D; }
+      .accent { fill: #7A5A3F; }
+      .navy   { fill: #2C3F5C; }
+      .barrier{ stroke: #C9BBA4; stroke-width: 1; stroke-dasharray: 5 5; fill: none; }
+      .h      { font-family: ui-serif, Georgia, serif; font-weight: 700; }
+      .t      { font-family: ui-sans-serif, -apple-system, sans-serif; font-size: 11px; }
+      .lbl    { font-family: ui-sans-serif, -apple-system, sans-serif; font-size: 10px; letter-spacing: 1.2px; text-transform: uppercase; }
+    </style>
+  </defs>
+  <rect class="bg" x="0" y="60" width="960" height="440"/>
+  <g transform="translate(40, 80)">
+    <rect class="card" width="300" height="280" rx="10" stroke="#7A5A3F" stroke-width="1.4"/>
+    <text class="lbl accent" x="16" y="22">Host process · iterum.app</text>
+    <text class="h ink" x="16" y="46" font-size="15">SwiftUI App</text>
+    <rect class="accentSoft" x="16" y="62" width="268" height="42" rx="6"/>
+    <text class="h ink" x="150" y="80" text-anchor="middle" font-size="13">TrackerDetailView · Editor</text>
+    <text class="t muted" x="150" y="96" text-anchor="middle">user sets a value</text>
+    <rect class="accentSoft" x="16" y="116" width="268" height="42" rx="6"/>
+    <text class="h ink" x="150" y="134" text-anchor="middle" font-size="13">ModelContext (SwiftData)</text>
+    <text class="t muted" x="150" y="150" text-anchor="middle">save → triggers CloudKit sync</text>
+    <rect class="navySoft" x="16" y="170" width="268" height="42" rx="6"/>
+    <text class="h ink" x="150" y="188" text-anchor="middle" font-size="13">SyncStatusMonitor</text>
+    <text class="t muted" x="150" y="204" text-anchor="middle">observes NSPersistentCloudKitContainer</text>
+    <rect class="card" x="16" y="224" width="268" height="42" rx="6"/>
+    <text class="h ink" x="150" y="242" text-anchor="middle" font-size="13">WidgetCenter.reloadAllTimelines</text>
+    <text class="t muted" x="150" y="258" text-anchor="middle">on relevant changes</text>
+  </g>
+  <g transform="translate(380, 80)">
+    <rect class="card" width="200" height="280" rx="10" stroke="#8B7E6D" stroke-width="1.4"/>
+    <text class="lbl muted" x="14" y="22">App Group container</text>
+    <text class="h ink" x="14" y="46" font-size="15">SharedStore</text>
+    <text class="t muted" x="14" y="62">group.com.max.Iterum</text>
+    <rect class="accentSoft" x="14" y="82" width="172" height="42" rx="6"/>
+    <text class="h ink" x="100" y="100" text-anchor="middle" font-size="13">iterum.store</text>
+    <text class="t muted" x="100" y="116" text-anchor="middle">SwiftData / SQLite</text>
+    <rect class="card" x="14" y="138" width="172" height="42" rx="6"/>
+    <text class="t ink" x="100" y="156" text-anchor="middle">Schema · 6 models</text>
+    <text class="t muted" x="100" y="172" text-anchor="middle">single source of truth</text>
+    <rect class="navySoft" x="14" y="194" width="172" height="56" rx="6"/>
+    <text class="h ink" x="100" y="214" text-anchor="middle" font-size="13">CloudKit</text>
+    <text class="t muted" x="100" y="230" text-anchor="middle">iCloud.com.max.Iterum</text>
+    <text class="t muted" x="100" y="244" text-anchor="middle">private database</text>
+  </g>
+  <g transform="translate(620, 80)">
+    <rect class="card" width="300" height="280" rx="10" stroke="#2C3F5C" stroke-width="1.4"/>
+    <text class="lbl navy" x="16" y="22">Extension process · IterumWidgets</text>
+    <text class="h ink" x="16" y="46" font-size="15">WidgetKit</text>
+    <rect class="navySoft" x="16" y="62" width="268" height="42" rx="6"/>
+    <text class="h ink" x="150" y="80" text-anchor="middle" font-size="13">TrackerWidgetProvider</text>
+    <text class="t muted" x="150" y="96" text-anchor="middle">AppIntentTimelineProvider</text>
+    <rect class="navySoft" x="16" y="116" width="268" height="42" rx="6"/>
+    <text class="h ink" x="150" y="134" text-anchor="middle" font-size="13">SelectTrackerIntent</text>
+    <text class="t muted" x="150" y="150" text-anchor="middle">user picks which tracker</text>
+    <rect class="accentSoft" x="16" y="170" width="268" height="42" rx="6"/>
+    <text class="h ink" x="150" y="188" text-anchor="middle" font-size="13">ToggleBooleanTrackerIntent</text>
+    <text class="t muted" x="150" y="204" text-anchor="middle">interactive · tap on home screen</text>
+    <rect class="card" x="16" y="224" width="268" height="42" rx="6"/>
+    <text class="h ink" x="150" y="242" text-anchor="middle" font-size="13">TrackerMonthWidget · view</text>
+    <text class="t muted" x="150" y="258" text-anchor="middle">month grid rendered from entries</text>
+  </g>
+  <path class="barrier" d="M 360 80 L 360 360"/>
+  <path class="barrier" d="M 600 80 L 600 360"/>
+  <g transform="translate(40, 400)">
+    <rect class="card" width="300" height="80" rx="10"/>
+    <text class="lbl muted" x="16" y="22">User surface</text>
+    <text class="h ink" x="16" y="44" font-size="14">Home Screen widget</text>
+    <text class="t muted" x="16" y="64">Tap a day → ToggleBooleanTrackerIntent</text>
+  </g>
+  <g transform="translate(380, 400)">
+    <rect class="navySoft" width="200" height="80" rx="10"/>
+    <text class="lbl navy" x="14" y="22">Apple cloud</text>
+    <text class="h ink" x="14" y="44" font-size="14">iCloud account</text>
+    <text class="t muted" x="14" y="64">private DB · same Apple ID</text>
+  </g>
+  <g transform="translate(620, 400)">
+    <rect class="card" width="300" height="80" rx="10"/>
+    <text class="lbl muted" x="16" y="22">Refresh</text>
+    <text class="h ink" x="16" y="44" font-size="14">WidgetCenter.reloadAllTimelines</text>
+    <text class="t muted" x="16" y="64">called from app and from intent</text>
+  </g>
+</svg>
